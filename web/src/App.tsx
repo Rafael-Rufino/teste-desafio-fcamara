@@ -10,8 +10,6 @@ import { AuthProvider } from './providers/auth'
 import ToastProvider from './providers/toast'
 
 function App() {
-  // const { user, isAuthenticated } = useAuth()
-  // console.log({ user: user, isAuthenticated: isAuthenticated })
   return (
     <Router>
       <AuthProvider>
