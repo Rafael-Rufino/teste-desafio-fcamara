@@ -8,9 +8,9 @@ export const Container = styled.div`
 `
 
 export const Error = styled.small`
-  color: ${theme.colors.danger.main};
-  font-size: 0.75rem;
-  margin-top: 8px;
   display: block;
+  color: ${theme.colors.danger.main};
+  font-size: ${theme.fonts.sizes.xSmall};
+  margin-top: 8px;
   padding-left: 4px;
 `
