@@ -42,6 +42,8 @@
 - [x] Adicionando component de loader para mostrar o carregamento
 - [x] Gerenciamento de estado (Context)
 - [x] Consumo de API
+- [x] Dados de usuario logado salvo no LocalStorage
+- [x] Dados de usuario logado exibido em tela
 
 <a id="tecnologias-utilizadas"></a>
 
