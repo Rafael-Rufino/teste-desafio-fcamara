@@ -20,6 +20,10 @@ export const Form = styled.form`
   > button {
     margin-top: 24px;
   }
+
+  @media (max-width: 520px) {
+    padding: 0 1.25rem;
+  }
 `
 export const Title = styled.h1`
   font-size: ${theme.fonts.sizes['3xlarge']};
