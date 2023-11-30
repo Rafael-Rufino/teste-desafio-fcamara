@@ -26,14 +26,12 @@ export const Input = styled.input`
   font-size: ${theme.fonts.sizes.medium};
   transition: border-color 0.2s ease-in;
   appearance: none;
-  font-weight: ${theme.fonts.weight.bold};
-
-  > input {
-    padding-bottom: 10px;
-  }
+  font-weight: ${theme.fonts.weight.semiBold};
+  color: ${theme.colors.gray.dark};
 
   &::placeholder {
     font-weight: ${theme.fonts.weight.regular};
+    color: ${theme.colors.gray.light};
   }
 
   &:focus {
