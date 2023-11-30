@@ -2,9 +2,12 @@ import styled from 'styled-components'
 
 import theme from '../../assets/styles/themes/default'
 
-type Variant = 'primary' | 'link' | 'outline'
+type ButtonProps = {
+  variant?: 'primary' | 'link' | 'outline'
+  color?: string
+}
 
-export const Container = styled.button<{ variant?: Variant; color?: string }>`
+export const Container = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,8 +15,7 @@ export const Container = styled.button<{ variant?: Variant; color?: string }>`
   width: 100%;
   border-radius: 4px;
   border: none;
-  height: 52px;
-  font-size: 1.125rem;
+  font-size: ${theme.fonts.sizes.large};
   gap: 8px;
 
   ${({ variant, theme, color }) => {
@@ -54,9 +56,6 @@ export const Container = styled.button<{ variant?: Variant; color?: string }>`
           color ? theme.colors[color].lighter : theme.colors.primary.main
         };
         &:hover {
-          color:  ${
-            color ? theme.colors[color].light : theme.colors.primary.light
-          };
           opacity: 0.8;
         }
       `
@@ -64,6 +63,7 @@ export const Container = styled.button<{ variant?: Variant; color?: string }>`
 
     if (variant === 'outline') {
       return `
+        height: 52px;
         background: transparent;
         color: ${theme.colors.primary.main};
         border: 2px solid ${theme.colors.primary.main};
@@ -73,10 +73,7 @@ export const Container = styled.button<{ variant?: Variant; color?: string }>`
         }
       `
     }
+
     return ''
   }}
-
-  &:hover {
-    background: ${theme.colors.primary.light};
-  }
 `
