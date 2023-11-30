@@ -20,9 +20,8 @@ export const Login = () => {
     onSubmit: async ({ password, username }: IAuth) => {
       try {
         login({ password, username })
-        await new Promise((resolve) => setTimeout(resolve, 1000))
       } catch (error) {
-        throw new Error(error as string)
+        console.error('Error ao fazer login: ', error)
       }
     },
     initialValues: {
