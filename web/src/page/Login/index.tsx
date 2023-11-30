@@ -1,8 +1,6 @@
-import { yupResolver } from '@hookform/resolvers/yup'
-
 import * as S from './styles'
 
-import { useForm } from 'react-hook-form'
+import { useFormik } from 'formik'
 import { FiLogIn } from 'react-icons/fi'
 
 import { Button } from '../../components'
@@ -14,46 +12,56 @@ import { IAuth } from '../../entities'
 
 import { useAuth } from '../../providers/auth'
 import { schema } from './validation/schema'
+
 export const Login = () => {
   const { login, isLoading } = useAuth()
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IAuth>({
-    resolver: yupResolver(schema),
+  const formik = useFormik({
+    onSubmit: async ({ password, username }: IAuth) => {
+      try {
+        login({ password, username })
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+      } catch (error) {
+        throw new Error(error as string)
+      }
+    },
+    initialValues: {
+      username: '',
+      password: '',
+    },
+    validateOnMount: true,
+    validationSchema: schema,
   })
 
-  const onSubmit = async ({ password, username }: IAuth) => {
-    try {
-      login({ password, username })
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-    } catch (error) {
-      throw new Error(error as string)
-    }
-  }
   return (
     <S.Container>
       <S.Title>Faça seu login</S.Title>
-      <S.Form onSubmit={handleSubmit(onSubmit)}>
-        <FormGroup error={errors.username?.message}>
+      <S.Form onSubmit={formik.handleSubmit}>
+        <FormGroup error={formik.touched.username && formik.errors.username}>
           <TextInput
-            {...register('username')}
+            name="username"
+            value={formik.values.username}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            disabled={formik.isSubmitting}
             label="Nome"
             type="text"
             placeholder="Digite seu nome"
           />
         </FormGroup>
-        <FormGroup error={errors.password?.message}>
+        <FormGroup error={formik.touched.password && formik.errors.password}>
           <TextInput
-            {...register('password')}
+            name="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            disabled={formik.isSubmitting}
             label="Senha"
             type="password"
             placeholder="Digite sua senha"
           />
         </FormGroup>
-        <Button type="submit">
+        <Button type="submit" disabled={formik.isSubmitting || !formik.isValid}>
           {isLoading ? (
             <Loader isLoading={isLoading} />
           ) : (

@@ -2,7 +2,7 @@ import * as S from './styles'
 
 type FormGroupProps = {
   children: React.ReactNode
-  error?: string | null
+  error?: string | null | boolean
 }
 
 export function FormGroup({ children, error }: FormGroupProps) {
