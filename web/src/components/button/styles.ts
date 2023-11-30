@@ -42,8 +42,12 @@ export const Container = styled.button<ButtonProps>`
         }
 
         &[disabled]{
-          background: #ccc;
+          background: ${theme.colors.primary.light};
           cursor: default;
+
+          &:hover {
+            opacity: 1;
+          }
         }
 
       `
