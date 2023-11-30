@@ -43,5 +43,6 @@ export const InfoItem = styled.small`
     margin-left: 4px;
     font-weight: ${theme.fonts.weight.regular};
     color: ${theme.colors.primary.dark};
+    font-size: ${theme.fonts.sizes.small};
   }
 `

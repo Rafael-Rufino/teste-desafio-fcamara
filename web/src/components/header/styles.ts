@@ -25,6 +25,10 @@ export const Logo = styled.small`
   font-size: ${theme.fonts.sizes['2xlarge']};
   font-weight: ${theme.fonts.weight.extraBold};
   color: ${theme.colors.primary.main};
+
+  @media (max-width: 520px) {
+    font-size: ${theme.fonts.sizes.xLarge};
+  }
 `
 
 export const Avatar = styled.img`
@@ -32,6 +36,10 @@ export const Avatar = styled.img`
   height: 40px;
   border-radius: 50%;
   margin-right: 8px;
+
+  @media (max-width: 520px) {
+    display: none;
+  }
 `
 
 export const UserName = styled.small`
