@@ -3,49 +3,49 @@ import { IUser } from '../../../../entities'
 import * as S from './styles'
 
 interface UserProps {
-  loggedInUser: IUser | null
+  user: IUser | null
 }
 
-export const User = ({ loggedInUser }: UserProps) => {
+export const User = ({ user }: UserProps) => {
   return (
     <S.Container>
-      <S.Avatar src={loggedInUser?.image} alt={loggedInUser?.username} />
+      <S.Avatar src={user?.image} alt={user?.username} />
       <S.UserInfo>
         <S.InfoItem>
           Username:
-          <span>{loggedInUser?.username}</span>
+          <span>{user?.username}</span>
         </S.InfoItem>
         <S.InfoItem>
           Email:
-          <span>{loggedInUser?.email}</span>
+          <span>{user?.email}</span>
         </S.InfoItem>
         <S.InfoItem>
           First Name:
-          <span>{loggedInUser?.firstName}</span>
+          <span>{user?.firstName}</span>
         </S.InfoItem>
         <S.InfoItem>
           Last Name:
-          <span>{loggedInUser?.lastName}</span>
+          <span>{user?.lastName}</span>
         </S.InfoItem>
         <S.InfoItem>
           Gender:
-          <span>{loggedInUser?.gender}</span>
+          <span>{user?.gender}</span>
         </S.InfoItem>
         <S.InfoItem>
           Age:
-          <span>{loggedInUser?.age}</span>
+          <span>{user?.age}</span>
         </S.InfoItem>
         <S.InfoItem>
           Phone:
-          <span>{loggedInUser?.phone}</span>
+          <span>{user?.phone}</span>
         </S.InfoItem>
         <S.InfoItem>
           Birth Date:
-          <span>{loggedInUser?.birthDate}</span>
+          <span>{user?.birthDate}</span>
         </S.InfoItem>
         <S.InfoItem>
           University:
-          <span>{loggedInUser?.university}</span>
+          <span>{user?.university}</span>
         </S.InfoItem>
       </S.UserInfo>
     </S.Container>

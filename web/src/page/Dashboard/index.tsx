@@ -11,7 +11,7 @@ export const Dashboard = () => {
   return (
     <S.Container>
       <Header />
-      <S.Content>{user && <User loggedInUser={loggedInUser} />}</S.Content>
+      <S.Content>{loggedInUser && <User user={user} />}</S.Content>
     </S.Container>
   )
 }

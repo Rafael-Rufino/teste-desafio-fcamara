@@ -13,14 +13,12 @@ export const Header = () => {
     <S.Container>
       <S.Logo>FCamara</S.Logo>
       <S.Profile>
-        {user && (
-          <S.Avatar src={loggedInUser?.image} alt={loggedInUser?.username} />
-        )}
+        {loggedInUser && <S.Avatar src={user?.image} alt={user?.username} />}
         <S.Wrapper>
-          {user && (
+          {loggedInUser && (
             <S.UserName>
               <span>Olá,</span>
-              {loggedInUser?.username}
+              {user?.username}
             </S.UserName>
           )}
           <S.LogoutButton variant="outline" onClick={handleLogout}>

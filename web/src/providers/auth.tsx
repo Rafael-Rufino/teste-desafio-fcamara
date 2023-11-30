@@ -15,11 +15,11 @@ import { AuthService, UserService } from '../services/module'
 
 interface IAuthContext {
   isAuthenticated: boolean
-  user: IAuth | null
+  user: IUser | null
   isLoading: boolean
   login(data: IAuth): Promise<void>
   logout(): void
-  loggedInUser: IUser | null
+  loggedInUser: IAuth | null
 }
 
 interface IAuthProvider {
@@ -28,11 +28,11 @@ interface IAuthProvider {
 const AuthContext = createContext<IAuthContext>({} as IAuthContext)
 
 export const AuthProvider = ({ children }: IAuthProvider) => {
-  const [user, setUser] = useState<IAuth | null>(null)
+  const [user, setUser] = useState<IUser | null>(null)
 
-  const [loggedInUser, setLoggedInUser] = useState<IUser | null>(null)
+  const [loggedInUser, setLoggedInUser] = useState<IAuth | null>(null)
 
-  const isAuthenticated = !!user
+  const isAuthenticated = !!loggedInUser
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
         const storageUser = localStorage.getItem('@auth:user')
 
         if (storageUser) {
-          setUser(JSON.parse(storageUser))
+          setLoggedInUser(JSON.parse(storageUser))
         } else {
           router('/login')
         }
@@ -62,12 +62,12 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
     () => async (userId: string) => {
       try {
         const response = await UserService.listUser(userId)
-        setLoggedInUser(response)
+        setUser(response)
       } catch (error) {
         console.error('Erro ao carregar usuário:', error)
       }
     },
-    [setLoggedInUser]
+    [setUser]
   )
 
   useEffect(() => {
@@ -75,13 +75,13 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
       if (!isAuthenticated) {
         router('/login')
       } else {
-        getUser(String(user.id))
+        getUser(String(loggedInUser.id))
         router('/')
       }
     }
 
     fetchData()
-  }, [user, isAuthenticated, router])
+  }, [loggedInUser, isAuthenticated, router])
 
   const login = useCallback(
     async ({ password, username }: IAuth) => {
@@ -89,7 +89,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
         setIsLoading(true)
         const response = await AuthService.login({ password, username })
         toast.success('Login realizado com sucesso!')
-        setUser(response as IAuth)
+        setLoggedInUser(response as IAuth)
 
         localStorage.setItem('@auth:user', JSON.stringify(response))
         router('/')
@@ -100,12 +100,12 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
         setIsLoading(false)
       }
     },
-    [router, setUser, setIsLoading]
+    [router, setLoggedInUser, setIsLoading]
   )
 
   const logout = () => {
     localStorage.removeItem('@auth:user')
-    setUser(null)
+    setLoggedInUser(null)
   }
 
   return (
