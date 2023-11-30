@@ -6,12 +6,12 @@ import { Header } from '../../components/header'
 import { User } from './components/user'
 
 export const Dashboard = () => {
-  const { user, list } = useAuth()
+  const { user, loggedInUser } = useAuth()
 
   return (
     <S.Container>
       <Header />
-      <S.Content>{user && <User list={list} />}</S.Content>
+      <S.Content>{user && <User loggedInUser={loggedInUser} />}</S.Content>
     </S.Container>
   )
 }

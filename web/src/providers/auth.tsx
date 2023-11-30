@@ -12,7 +12,7 @@ interface IAuthContext {
   isLoading: boolean
   login(data: IAuth): Promise<void>
   logout(): void
-  list: IUser | null
+  loggedInUser: IUser | null
 }
 
 interface IAuthProvider {
@@ -22,11 +22,13 @@ const AuthContext = createContext<IAuthContext>({} as IAuthContext)
 
 export const AuthProvider = ({ children }: IAuthProvider) => {
   const [user, setUser] = useState<IAuth | null>(null)
-  const [list, setList] = useState<IUser | null>(null)
+
+  const [loggedInUser, setLoggedInUser] = useState<IUser | null>(null)
 
   const isAuthenticated = !!user
 
   const [isLoading, setIsLoading] = useState(false)
+
   const router = useNavigate()
 
   useEffect(() => {
@@ -50,7 +52,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
   const getUser = async (userId: string) => {
     try {
       const response = await UserService.listUser(userId)
-      setList(response)
+      setLoggedInUser(response)
     } catch (error) {
       throw new Error('Erro ao carregar usuário!')
     }
@@ -101,7 +103,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
         login,
         logout,
         isLoading,
-        list,
+        loggedInUser,
       }}
     >
       {children}

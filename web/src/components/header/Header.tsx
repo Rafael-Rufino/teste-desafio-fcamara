@@ -3,7 +3,7 @@ import { useAuth } from '../../providers/auth'
 import * as S from './styles'
 
 export const Header = () => {
-  const { logout, list, user } = useAuth()
+  const { logout, loggedInUser, user } = useAuth()
 
   const handleLogout = () => {
     logout()
@@ -13,12 +13,14 @@ export const Header = () => {
     <S.Container>
       <S.Logo>FCamara</S.Logo>
       <S.Profile>
-        {user && <S.Avatar src={list?.image} alt={list?.username} />}
+        {user && (
+          <S.Avatar src={loggedInUser?.image} alt={loggedInUser?.username} />
+        )}
         <S.Wrapper>
           {user && (
             <S.UserName>
               <span>Olá,</span>
-              {list?.username}
+              {loggedInUser?.username}
             </S.UserName>
           )}
           <S.LogoutButton variant="outline" onClick={handleLogout}>
