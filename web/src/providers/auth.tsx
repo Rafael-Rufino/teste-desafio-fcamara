@@ -1,4 +1,11 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
@@ -51,14 +58,17 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
     loadStorageData()
   }, [router])
 
-  const getUser = async (userId: string) => {
-    try {
-      const response = await UserService.listUser(userId)
-      setLoggedInUser(response)
-    } catch (error) {
-      console.error('Erro ao carregar usuário:', error)
-    }
-  }
+  const getUser = useMemo(
+    () => async (userId: string) => {
+      try {
+        const response = await UserService.listUser(userId)
+        setLoggedInUser(response)
+      } catch (error) {
+        console.error('Erro ao carregar usuário:', error)
+      }
+    },
+    [setLoggedInUser]
+  )
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,24 +83,27 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
     fetchData()
   }, [user, isAuthenticated, router])
 
-  const login = async ({ password, username }: IAuth) => {
-    try {
-      setIsLoading(true)
-      const response = await AuthService.login({ password, username })
-      toast.success('Login realizado com sucesso!')
-      setUser(response as IAuth)
+  const login = useCallback(
+    async ({ password, username }: IAuth) => {
+      try {
+        setIsLoading(true)
+        const response = await AuthService.login({ password, username })
+        toast.success('Login realizado com sucesso!')
+        setUser(response as IAuth)
 
-      localStorage.setItem('@auth:user', JSON.stringify(response))
-      router('/')
-    } catch (error) {
-      toast.error('Usuário ou senha inválido!')
-      console.error('Erro ao realizar login:', error)
-    } finally {
-      setIsLoading(false)
-    }
-  }
+        localStorage.setItem('@auth:user', JSON.stringify(response))
+        router('/')
+      } catch (error) {
+        toast.error('Usuário ou senha inválido!')
+        console.error('Erro ao realizar login:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    },
+    [router, setUser, setIsLoading]
+  )
 
-  const logout = async () => {
+  const logout = () => {
     localStorage.removeItem('@auth:user')
     setUser(null)
   }
