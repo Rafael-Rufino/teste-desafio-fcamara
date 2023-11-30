@@ -30,6 +30,10 @@
 
 ### Requisitos
 
+<h1 align="center">
+    <img alt="home" src="./web/.github/teste.png" width="800px">
+</h1>
+
 - [x] interface construida com React, typescript e Styled-components
 - [x] tela de Login
 - [x] incluir as cores e fonts da interface
