@@ -13,7 +13,7 @@ export const Header = () => {
     <S.Container>
       <S.Logo>FCamara</S.Logo>
       <S.Profile>
-        <S.Avatar src={list?.image} />
+        {user && <S.Avatar src={list?.image} alt={list?.username} />}
         <S.Wrapper>
           {user && (
             <S.UserName>
