@@ -41,6 +41,8 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
         } else {
           router('/login')
         }
+      } catch (error) {
+        console.error('Erro ao carregar dados do armazenamento local:', error)
       } finally {
         setIsLoading(false)
       }
@@ -54,7 +56,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
       const response = await UserService.listUser(userId)
       setLoggedInUser(response)
     } catch (error) {
-      throw new Error('Erro ao carregar usuário!')
+      console.error('Erro ao carregar usuário:', error)
     }
   }
 
@@ -63,7 +65,6 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
       if (!isAuthenticated) {
         router('/login')
       } else {
-        localStorage.getItem('@auth:user')
         getUser(String(user.id))
         router('/')
       }
@@ -77,14 +78,13 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
       setIsLoading(true)
       const response = await AuthService.login({ password, username })
       toast.success('Login realizado com sucesso!')
-
       setUser(response as IAuth)
 
       localStorage.setItem('@auth:user', JSON.stringify(response))
       router('/')
     } catch (error) {
       toast.error('Usuário ou senha inválido!')
-      throw new Error(error as string)
+      console.error('Erro ao realizar login:', error)
     } finally {
       setIsLoading(false)
     }
