@@ -17,9 +17,9 @@ export const colors: IColors = {
   },
 
   primary: {
-    lighter: '#E0E3FF',
-    light: '#6674F4',
-    main: '#5061fc',
-    dark: '#3346F0',
+    lighter: '#ffecdf',
+    light: '#ff9d7f',
+    main: '#FF5D35',
+    dark: '#fe571b',
   },
 }
