@@ -1,5 +1,5 @@
 <h3 align="center">
-    <b>Tela de Login</b>
+    <b>Tela de Autenticação de usuario</b>
 </h3>
 
 # Índice
@@ -16,8 +16,16 @@
 ## :heavy_check_mark: :iphone: Versão Web
 
 <h1 align="center">
-    <img alt="home" src="./.github/web.png" width="800px">
-    <img alt="modal" src="./.github/mobile.png" width="300px">
+    <img alt="Desktop" src="./web/.github/dashboard-desktop.png" width="800px">
+    <img alt="Mobile" src="./web/.github/mobile-login.png" width="300px">
+    <img alt="Desktop" src="./web/.github/dashboard-desktop.png" width="800px">
+    <img alt="Mobile" src="./web/.github/dashboard-mobile.png" width="300px">
+</h1>
+
+## :heavy_check_mark: :iphone: Video
+
+<h1 align="center">
+    <img alt="home" src="./web/.github/video.gif" width="800px">
 </h1>
 
 ### Requisitos
@@ -28,7 +36,7 @@
 - [x] Integração entre front-end com Api
 - [x] A página deve ser responsiva;
 - [ ] testes automatizados
-- [x] Adicionando o react hook form
+- [x] Adicionando o formik
 - [x] Adicionando validação com Yup
 - [x] Implementação de Toast para aprimorar a experiência do usuário ao afzer login
 - [x] Adicionando component de loader para mostrar o carregamento
@@ -52,7 +60,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias
 1. Faça um clone :
 
 ```sh
-  $ git clone
+  $ git clone https://github.com/Rafael-Rufino/teste-desafio-fcamara.git
 ```
 
 2. Executando a Aplicação:
@@ -88,10 +96,6 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias
 - Crie uma branch com a sua feature: `git checkout -b my-feature`
 - Commit suas mudanças: `git commit -m 'feat: My new feature'`
 - Push a sua branch: `git push origin my-feature`
-
-## :memo: License
-
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
 ---
 
