@@ -31,15 +31,13 @@
 ## Credencias que devem ser utilizdas para fazer login:
 
 ```sh
-  usuario 01:
+ - usuario 01:
    username: 'kminchelle',
-    password: '0lelplR',
+   password: '0lelplR',
 
-  usuario 02:
+ - usuario 02:
    username: 'atuny0',
-    password: '9uQFF1Lh',
-
-
+   password: '9uQFF1Lh',
 ```
 
 ### Requisitos
