@@ -4,7 +4,7 @@ import * as S from './styles'
 
 type TextInputProps = {
   label?: string
-  name: string
+  name?: string
 } & React.InputHTMLAttributes<HTMLInputElement>
 
 export const TextInput = ({ label, name, ...rest }: TextInputProps) => {
