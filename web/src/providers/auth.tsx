@@ -64,7 +64,6 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
       try {
         const response = await UserService.listUser(userId)
         const user = UserMapper.toDomain(response as IUser)
-        console.log('response', user)
         setUser(user)
       } catch (error) {
         console.error('Erro ao carregar usuário:', error)
