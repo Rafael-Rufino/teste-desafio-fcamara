@@ -1,5 +1,3 @@
-import { AxiosError } from 'axios'
-
 import { IAuth } from '../../entities/IAuth'
 
 import HttpClient from '../utils/HttpClient'
@@ -12,16 +10,10 @@ class AuthService {
   }
 
   async login({ username, password }: IAuth) {
-    try {
-      const response = await this.httpClient.post('/auth/login', {
-        username,
-        password,
-      })
-      return response
-    } catch (error) {
-      const axiosError = error as AxiosError
-      return Promise.reject(`Erro ao fazer login: ${axiosError.message}`)
-    }
+    return this.httpClient.post('/auth/login', {
+      username,
+      password,
+    })
   }
 }
 

@@ -12,6 +12,7 @@ import { toast } from 'react-toastify'
 import { IAuth, IUser } from '../entities'
 
 import { AuthService, UserService } from '../services/module'
+import UserMapper from '../services/module/mappers/UserMapper'
 
 interface IAuthContext {
   isAuthenticated: boolean
@@ -62,7 +63,9 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
     () => async (userId: string) => {
       try {
         const response = await UserService.listUser(userId)
-        setUser(response)
+        const user = UserMapper.toDomain(response as IUser)
+        console.log('response', user)
+        setUser(user)
       } catch (error) {
         console.error('Erro ao carregar usuário:', error)
       }

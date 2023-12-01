@@ -18,11 +18,7 @@ export const Login = () => {
 
   const formik = useFormik({
     onSubmit: async ({ password, username }: IAuth) => {
-      try {
-        login({ password, username })
-      } catch (error) {
-        console.error('Error ao fazer login: ', error)
-      }
+      login({ password, username })
     },
     initialValues: {
       username: '',
