@@ -51,7 +51,7 @@
 - [x] incluir as cores e fonts da interface
 - [x] Integração entre front-end com Api
 - [x] A página deve ser responsiva;
-- [ ] testes automatizados
+- [x] testes automatizados
 - [x] Adicionando o formik
 - [x] Adicionando validação com Yup
 - [x] Implementação de Toast para aprimorar a experiência do usuário ao afzer login
