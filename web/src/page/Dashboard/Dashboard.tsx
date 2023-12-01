@@ -1,10 +1,9 @@
-import { useAuth } from '../../providers/auth'
-
 import * as S from './styles'
 
 import { Logo } from '../../components'
 import { Header } from '../../components/header'
 import { Profile } from '../../components/profile'
+import { useAuth } from '../../contexts/AuthContext'
 import { User } from './components/user'
 
 export const Dashboard = () => {

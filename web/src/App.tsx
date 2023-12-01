@@ -6,7 +6,8 @@ import theme from './assets/styles/themes/default'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import { Routes } from './Routes'
-import { AuthProvider } from './providers/auth'
+
+import { AuthProvider } from './contexts/AuthContext'
 import ToastProvider from './providers/toast'
 
 function App() {

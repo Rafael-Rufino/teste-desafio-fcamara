@@ -10,7 +10,7 @@ import { TextInput } from '../../components/textInput'
 
 import { IAuth } from '../../entities'
 
-import { useAuth } from '../../providers/auth'
+import { useAuth } from '../../contexts/AuthContext'
 import { schema } from './validation/schema'
 
 export const Login = () => {

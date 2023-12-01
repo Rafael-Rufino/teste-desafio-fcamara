@@ -1,4 +1,4 @@
-import { useAuth } from '../../providers/auth'
+import { useAuth } from '../../contexts/AuthContext'
 import * as S from './styles'
 
 export const Profile = () => {
