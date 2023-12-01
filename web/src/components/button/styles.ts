@@ -17,6 +17,7 @@ export const Container = styled.button<ButtonProps>`
   border: none;
   font-size: ${theme.fonts.sizes.large};
   gap: 0.5rem;
+  transition: all 0.2s ease-in-out;
 
   ${({ variant, theme, background, color }) => {
     if (variant === 'primary') {
@@ -38,12 +39,9 @@ export const Container = styled.button<ButtonProps>`
         }
 
         &[disabled]{
-          background: ${theme.colors.primary.light};
+          background: ${background ? [background] : theme.colors.primary.light};
           cursor: default;
-
-          &:hover {
-            opacity: 1;
-          }
+          opacity: 0.7;
         }
 
       `
