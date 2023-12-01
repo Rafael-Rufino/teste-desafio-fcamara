@@ -11,7 +11,7 @@
 
 ## :bookmark: Sobre
 
-<strong>aplicação Web em React JS com TypeScript que contem um formulário de login e após efetuar o login você deverá exibir as informações completas do usuário logado.</strong>
+<strong>Sistema de Autenticação de Usuário - Esta aplicação web, desenvolvida em ReactJS com TypeScript, permite a autenticação de usuários. Apresenta um formulário de login, onde os usuários podem realizar o login. Após a autenticação bem-sucedida, a aplicação exibe detalhes completos do usuário logado.</strong>
 
 ## :heavy_check_mark: :iphone: Versão Web
 
