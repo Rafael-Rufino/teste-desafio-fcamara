@@ -8,7 +8,7 @@ export const Container = styled.div`
   width: 100%;
 `
 
-export const Label = styled.div`
+export const Label = styled.label`
   display: flex;
   padding-bottom: 8px;
 `
