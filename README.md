@@ -1,5 +1,5 @@
 <h3 align="center">
-    <b>Tela de Autenticação de usuario</b>
+    <b>Sistema de Autenticação de usuario</b>
 </h3>
 
 # Índice
@@ -27,6 +27,20 @@
 <h1 align="center">
     <img alt="home" src="./web/.github/video.gif" width="800px">
 </h1>
+
+## Credencias que devem ser utilizdas para fazer login:
+
+```sh
+  usuario 01:
+   username: 'kminchelle',
+    password: '0lelplR',
+
+  usuario 02:
+   username: 'atuny0',
+    password: '9uQFF1Lh',
+
+
+```
 
 ### Requisitos
 
